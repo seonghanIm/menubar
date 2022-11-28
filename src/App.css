@@ -46,13 +46,13 @@
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
-  user-select: none;
-  -webkit-user-region: drag;
+  -webkit-app-region: drag;
 }
 .titleButton{
   position: absolute;
   top: 0.5%;
   right: 0%;
+  -webkit-app-region: no-drag;
 }
 
 .main-content{
@@ -63,6 +63,8 @@
 .Panel{
   height:30px;
 }
+
+
 
 body{
   overflow: hidden;

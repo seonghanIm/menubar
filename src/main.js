@@ -1,6 +1,5 @@
 const {app, BrowserWindow,ipcMain} = require('electron')
-const path = require('path')
-const ipc = ipcMain;
+const ipc = ipcMain; // ipc 통신
 
 let win;
 function createWindow() {
@@ -11,25 +10,19 @@ function createWindow() {
             nodeIntegration: true,
             contextIsolation: false
         },
-        titleBarStyle:'hidden',
+        titleBarStyle:'hidden', // custom title bar를 위한
         trafficLightPosition:{
             x :10,
             y :10,
         }
-
     });
-    console.log(process.versions.node);
-    win.loadURL("http://localhost:3000");
+    console.log(process.versions.node); // node version 확인
+    win.loadURL("http://localhost:3000"); //리엑트
     win.webContents.openDevTools();
-
-
 };
-
-
-ipc.on('minimizeApp',()=>{
+ipc.on('minimizeApp',()=>{   // ipc 통신 코드 channel별 최소화, 최대화, 닫기 버튼 연결
     win.minimize();
 });
-
 ipc.on('maximizeApp',()=>{
     if(win.isMaximized()){
         win.restore();
@@ -37,11 +30,9 @@ ipc.on('maximizeApp',()=>{
         win.maximize();
     }
 });
-
 ipc.on('closeApp',()=>{
     win.close();
 });
-
 app.whenReady().then(() => {
     createWindow()
 });
