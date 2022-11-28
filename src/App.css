@@ -35,7 +35,9 @@
 .App-link {
   color: #61dafb;
 }
-
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  min-width: 5px;
+}
 .titlebar{
   display: table-cell;
   width: 960px;
@@ -47,12 +49,16 @@
   user-select: none;
   -webkit-user-region: drag;
 }
+.titleButton{
+  position: absolute;
+  top: 0.5%;
+  right: 0%;
+}
 
 .main-content{
   height:calc(100vh - 40px);
   background-color: white;
 }
-
 
 .Panel{
   height:30px;

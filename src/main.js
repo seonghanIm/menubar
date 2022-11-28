@@ -1,8 +1,10 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow,ipcMain} = require('electron')
 const path = require('path')
+const ipc = ipcMain;
 
+let win;
 function createWindow() {
-    const win = new BrowserWindow({
+     win = new BrowserWindow({
         width: 960,
         height: 630,
         webPreferences: {
@@ -18,8 +20,27 @@ function createWindow() {
     });
     console.log(process.versions.node);
     win.loadURL("http://localhost:3000");
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
+
+
 };
+
+
+ipc.on('minimizeApp',()=>{
+    win.minimize();
+});
+
+ipc.on('maximizeApp',()=>{
+    if(win.isMaximized()){
+        win.restore();
+    }else{
+        win.maximize();
+    }
+});
+
+ipc.on('closeApp',()=>{
+    win.close();
+});
 
 app.whenReady().then(() => {
     createWindow()
@@ -27,3 +48,4 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 });
+

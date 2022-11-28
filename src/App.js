@@ -1,18 +1,35 @@
 import TreeView from '@mui/lab/TreeView';
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Collapse} from "antd";
 import {TreeItem} from "@mui/lab";
 import {Resizable} from "re-resizable";
 import FolderIcon from '@mui/icons-material/Folder';
 import File from '@mui/icons-material/InsertDriveFile';
+import CloseIcon from '@mui/icons-material/Close';
+import {Button} from "@mui/material";
+import MinimizeIcon from '@mui/icons-material/Minimize';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+const ipcRenderer = window.require("electron").ipcRenderer;
+const ipc = ipcRenderer;
+
+// let btnMin = document.getElementById("min");
+// let btnMax = document.getElementById("max");
+//
+//
+// btnMin.addEventListener("click", ()=>{
+//     ipc.send('minimizeApp');
+// });
+// btnMax.addEventListener("click", ()=>{
+//     ipc.send('maximizeApp');
+// });
 
 
 const {Panel} = Collapse;
 const data = {
     id: 'root',
     name: 'Folder 2',
-    nodeID:'2',
+    nodeID: '2',
     icon: FolderIcon,
     color: "warning",
     children: [
@@ -80,8 +97,19 @@ const data = {
 }
 
 
-
 const App = () => {
+
+    function btnClose() {
+        ipc.send('closeApp');
+    }
+
+    function btnMinimize() {
+        ipc.send('minimizeApp');
+    }
+
+    function btnMaximize() {
+        ipc.send('maximizeApp')
+    }
 
     const makeTree = (nodes) => (
         <TreeItem nodeId={nodes.id} key={nodes.id} label={nodes.name} icon={<nodes.icon color={nodes.color}/>}>
@@ -91,52 +119,59 @@ const App = () => {
     return (
         <body>
         <div style={{display: "table"}}>
-            <header class="titlebar">milliman</header>
+            <header class="titlebar">milliman
+                <div class="titleButton">
+                <Button style={{marginRight:"5px", minWidth:"5px", width:"10px"}} variant="text" color="inherit" onClick={btnMinimize} startIcon={<MinimizeIcon/>}></Button>
+                <Button style={{marginRight:"5px", minWidth:"5px", width:"10px"}} variant="text" color="inherit" onClick={btnMaximize} startIcon={<ContentCopyIcon/>}></Button>
+                <Button style={{marginRight:"5px", minWidth:"5px", width:"10px"}} variant="text" color="inherit" onClick={btnClose} startIcon={<CloseIcon/>}></Button>
+                </div>
+            </header>
         </div>
 
         <Resizable className="main-content"
-            defaultSize={{width:230, height:"100%"}}
-           style={{
-            position: "absolute",
-            maxWidth: "230px",
-            borderRight: "1px solid black",
-            lineHeight: "0px"
-        }}>
+                   defaultSize={{width: 230, height: "100%"}}
+                   style={{
+                       position: "absolute",
+                       maxWidth: "230px",
+                       borderRight: "1px solid black",
+                       lineHeight: "0px"
+                   }}>
             <Collapse className="sidebar">
-                <Panel header="Category 1" style={{borderBottom: "0px", overflowX:"hidden"}}>
-                    <Resizable style={{overflowY:"auto", overflowX: "hidden", margin:"-16px"}}>
-                    <TreeView sx={{height: 277}}>
-                        <TreeItem
-                            label="Folder 1"
-                            nodeId="1"
-                            icon={<FolderIcon color="warning"/>}
+                <Panel header="Category 1" style={{borderBottom: "0px", overflowX: "hidden"}}>
+                    <Resizable style={{overflowY: "auto", overflowX: "hidden", margin: "-16px"}}>
+                        <TreeView sx={{height: 277}}>
+                            <TreeItem
+                                label="Folder 1"
+                                nodeId="1"
+                                icon={<FolderIcon color="warning"/>}
                             >
-                        </TreeItem>
-                        {makeTree(data)}
-                    </TreeView>
+                            </TreeItem>
+                            {makeTree(data)}
+                        </TreeView>
                     </Resizable>
                 </Panel>
             </Collapse>
 
             <Collapse className="sidebar">
-                <Panel header="Category 2" style={{borderBottom:"0px", overflowX:"hidden"}}>
-                    <Resizable style={{overflowY:"auto", overflowX: "hidden",margin:"-16px"}}>
-                    <TreeView sx={{height: 277}}>
-                        <TreeItem
-                            label="Folder 1"
-                            nodeId="1"
-                            icon={<FolderIcon color="warning"/>}
-                        >
-                        </TreeItem>
-                        {makeTree(data)}
-                    </TreeView>
+                <Panel header="Category 2" style={{borderBottom: "0px", overflowX: "hidden"}}>
+                    <Resizable style={{overflowY: "auto", overflowX: "hidden", margin: "-16px"}}>
+                        <TreeView sx={{height: 277}}>
+                            <TreeItem
+                                label="Folder 1"
+                                nodeId="1"
+                                icon={<FolderIcon color="warning"/>}
+                            >
+                            </TreeItem>
+                            {makeTree(data)}
+                        </TreeView>
                     </Resizable>
                 </Panel>
             </Collapse>
         </Resizable>
         </body>
-
     )
+
+
 }
 
 export default App;
