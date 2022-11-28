@@ -1,9 +1,8 @@
-
 import './App.css';
 import React, {useEffect} from 'react';
 import {Resizable} from "re-resizable";
-import {Titlebar} from "./titlebar";
-import {Category} from "./category";
+import {Titlebar} from "./components/titlebar";
+import {Category} from "./components/category";
 
 const App = () => {
     return (

@@ -9,27 +9,27 @@ export const Titlebar = () => {
     const ipcRenderer = window.require("electron").ipcRenderer;
     const ipc = ipcRenderer;
     // btn onclick 함수로 icp render와 icp main을 통신
-    function btnClose() {
-        ipc.send('closeApp');
-    }
-
-    function btnMinimize() {
-        ipc.send('minimizeApp');
-    }
-
-    function btnMaximize() {
-        ipc.send('maximizeApp')
-    }
+    // function btnClose() {
+    //     ipc.send('closeApp');
+    // }
+    //
+    // function btnMinimize() {
+    //     ipc.send('minimizeApp');
+    // }
+    //
+    // function btnMaximize() {
+    //     ipc.send('maximizeApp')
+    // }
     return (
         <div style={{dispaly: "table"}}>
             <header class="titlebar">milliman
                 <div class="titleButton">
-                    <Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"
-                            onClick={btnMinimize} startIcon={<MinimizeIcon/>}></Button>
-                    <Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"
-                            onClick={btnMaximize} startIcon={<ContentCopyIcon/>}></Button>
-                    <Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"
-                            onClick={btnClose} startIcon={<CloseIcon/>}></Button>
+                    {/*<Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"*/}
+                    {/*        onClick={btnMinimize} startIcon={<MinimizeIcon/>}></Button>*/}
+                    {/*<Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"*/}
+                    {/*        onClick={btnMaximize} startIcon={<ContentCopyIcon/>}></Button>*/}
+                    {/*<Button style={{marginRight: "10px", minWidth: "5px", width: "10px"}} variant="text" color="inherit"*/}
+                    {/*        onClick={btnClose} startIcon={<CloseIcon/>}></Button>*/}
                 </div>
             </header>
         </div>
