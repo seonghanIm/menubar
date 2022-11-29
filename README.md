@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Electron + react MenuBar component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Description
 
-## Available Scripts
+### - dependency
 
-In the project directory, you can run:
+| electron | 13.6.9 |
+| --- | --- |
+| react | 18.2.0 |
+| antd | 5.0.1 |
+| mui/lab | 5.0.0-alpha.109 |
+| mui/materal | 5.10.15 |
+| re-resizable | 6.9.9 |
+| node  | 14.16.0 |
 
-### `npm start`
+### - Basic
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 기본폰트 : Inter
+- 기본 폰트 크기 : 10px
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```css
+* {
+  font-family: "Inter" !important;
+  font-size: 10px !important;
+}
+```
 
-### `npm test`
+### - components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- titlebar : 기존 electron의 타이틀바를 hide처리하고, header 태그를 사용해 새로운 타이틀바 생성, 타이틀바의 최대화, 최소화, 창닫기 구현 (Mac OS 의 경우 기존의 titlebar 를 없애더라도 traffic-lights 가 남아있기 때문에 구분하여 사용 ⇒ branch 로 구분(default : forWindows))
+    
+       - mui의 Button, icon, 사용하여 버튼 구현
+    
+       - ipc render, ipc main 사용하여  버튼 통신
+    
+    - Windows titlebar
+    
+    ![Untitled](https://user-images.githubusercontent.com/80394582/204409878-b10f3329-0cd7-4dab-828a-01a6272c0b71.png)
+    
+    - Mac OS titlebar
+    
+    ![Untitled](https://user-images.githubusercontent.com/80394582/204409906-49e2ebf0-8ca8-4caf-b740-831a1489ab39.png)
+    
 
-### `npm run build`
+- Category :  Resizable ⇒Collapse ⇒Treeview ⇒TreeItem 순으로 사용 , overflowY로 resizing시 scroll 생성하게함,  props로 Collapse header 설정
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2. Start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- git clone , dependency install( node의 경우 global version을 사용하지 않고, electron version에 따라 다른 version 을 사용함)
+- git clone → yarn install → yarn start
 
-### `npm run eject`
+- scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```json
+"scripts": {
+    "start": "concurrently \"yarn react-scripts start\" \"yarn electron\" ",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "wait-on http://localhost:3000 && electron ."
+  },
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- dependency
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+"devDependencies": {
+    "concurrently": "^7.6.0",
+    "electron": "^13.6.9",
+    "wait-on": "^6.0.1"
+  }
+```
