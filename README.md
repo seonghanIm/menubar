@@ -2,7 +2,7 @@
 
 ## 1. Description
 
-### - dependency
+### 1) dependency
 
 | electron | 13.6.9 |
 | --- | --- |
@@ -13,7 +13,7 @@
 | re-resizable | 6.9.9 |
 | node  | 14.16.0 |
 
-### - Basic
+### 2) Basic
 
 - 기본폰트 : Inter
 - 기본 폰트 크기 : 10px
@@ -25,7 +25,7 @@
 }
 ```
 
-### - components
+### 3) components
 
 - titlebar : 기존 electron의 타이틀바를 hide처리하고, header 태그를 사용해 새로운 타이틀바 생성, 타이틀바의 최대화, 최소화, 창닫기 구현 (Mac OS 의 경우 기존의 titlebar 를 없애더라도 traffic-lights 가 남아있기 때문에 구분하여 사용 ⇒ branch 로 구분(default : forWindows))
     
