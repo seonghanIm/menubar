@@ -43,6 +43,8 @@
     
 
 - Category :  Resizable ⇒Collapse ⇒Treeview ⇒TreeItem 순으로 사용 , overflowY로 resizing시 scroll 생성하게함,  props로 Collapse header 설정
+  
+    ![Untitled]https://user-images.githubusercontent.com/80394582/204440965-13f06e8c-76f4-484c-a175-0593041c7323.PNG
 
 ## 2. Start
 
