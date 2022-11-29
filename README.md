@@ -35,11 +35,11 @@
     
     - Windows titlebar
     
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%20b1363530ea734c6e9c4faa46ac25a8d8/Untitled.png)
+    ![Untitled](https://user-images.githubusercontent.com/80394582/204409878-b10f3329-0cd7-4dab-828a-01a6272c0b71.png)
     
     - Mac OS titlebar
     
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%20b1363530ea734c6e9c4faa46ac25a8d8/Untitled%201.png)
+    ![Untitled](https://user-images.githubusercontent.com/80394582/204409906-49e2ebf0-8ca8-4caf-b740-831a1489ab39.png)
     
 
 - Category :  Resizable ⇒Collapse ⇒Treeview ⇒TreeItem 순으로 사용 , overflowY로 resizing시 scroll 생성하게함,  props로 Collapse header 설정
