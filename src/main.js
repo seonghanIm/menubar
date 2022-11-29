@@ -18,7 +18,7 @@ function createWindow() {
     });
     console.log(process.versions.node); // node version 확인
     win.loadURL("http://localhost:3000"); //리엑트
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools(); 개발자 모드
 };
 ipc.on('minimizeApp',()=>{   // ipc 통신 코드 channel별 최소화, 최대화, 닫기 버튼 연결
     win.minimize();
