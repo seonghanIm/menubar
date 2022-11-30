@@ -5,6 +5,7 @@
 ### 1) dependency
 
 | electron | 13.6.9 |
+| --- | --- |
 | react | 18.2.0 |
 | antd | 5.0.1 |
 | mui/lab | 5.0.0-alpha.109 |
